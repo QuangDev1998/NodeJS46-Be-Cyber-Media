@@ -1,5 +1,7 @@
+import multer from "multer";
 import { responseError } from "./response.helper.js";
 import jwt from "jsonwebtoken";
+
 export const handleError = (err, req, res, next) => {
   console.log({ err });
   // 401 : logout
@@ -10,6 +12,10 @@ export const handleError = (err, req, res, next) => {
   }
   if (err instanceof jwt.TokenExpiredError) {
     err.code = 403;
+  }
+  if (err instanceof multer.MulterError) {
+    err.code = 400;
+    // A Multer error occurred when uploading.
   }
   const resData = responseError(err.message, err.code, err.stack);
   res.status(resData.code).json(resData);
