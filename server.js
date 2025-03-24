@@ -15,6 +15,8 @@ app.use(
   })
 );
 
+app.use(express.static("."));
+
 app.use(rootRouter);
 
 app.use(handleError);
