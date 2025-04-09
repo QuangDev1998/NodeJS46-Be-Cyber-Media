@@ -124,6 +124,7 @@ const authServices = {
       ignoreExpiration: true,
     });
     console.log({ decodeRefreshToken, decodeAccessToken });
+
     if (decodeRefreshToken.userId !== decodeAccessToken.userId) {
       throw new UnauthorizationException(`Cặp Token không hợp lệ`);
     }
@@ -147,6 +148,7 @@ const authServices = {
     const accessToken = jwt.sign({ userId: userId }, ACCESS_TOKEN_SECRET, {
       expiresIn: ACCESS_TOKEN_EXPIRED,
     });
+
     const refreshToken = jwt.sign({ userId: userId }, REFRESH_TOKEN_SECRET, {
       expiresIn: REFRESH_TOKEN_EXPIRED,
     });

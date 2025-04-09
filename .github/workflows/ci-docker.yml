@@ -1,0 +1,21 @@
+name: CI-DOCKER
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Đăng nhập vào Docker HUB
+        run: docker login -u leminhquangdev -p ${{secrets.PASS_DOCKER}}
+
+      - name: Build image mới
+        run: docker build -t leminhquangdev/image-be_cyber_media:latest .
+
+      - name: Đẩy image lên docker HUB
+        run: docker push leminhquangdev/image-be_cyber_media:latest

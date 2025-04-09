@@ -1,5 +1,5 @@
-import videoServices from "../services/video.services.js";
 import { responseSuccess } from "../common/helpers/response.helper.js";
+import videoServices from "../services/video.services.js";
 const videoController = {
   videoList: async (req, res, next) => {
     try {
@@ -7,7 +7,7 @@ const videoController = {
 
       const resData = responseSuccess(
         videos,
-        `Get List Video Successfully`,
+        `Get List Video Successfully 123`,
         200
       );
 

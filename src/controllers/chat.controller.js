@@ -1,6 +1,5 @@
-import { chatService } from "../services/chat.services.js";
-
 import { responseSuccess } from "../common/helpers/response.helper.js";
+import { chatService } from "../services/chat.services.js";
 export const chatController = {
   create: async function (req, res, next) {
     try {
